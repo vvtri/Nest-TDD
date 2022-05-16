@@ -22,9 +22,9 @@ describe('Auth e2e spec', () => {
 		await getConnection().connect()
 	})
 
-  afterAll(async () => {
-    await getConnection().close()
-  })
+	afterAll(async () => {
+		await getConnection().close()
+	})
 
 	const signupUser = (email: string, password: string) => {
 		return request(app.getHttpServer())
@@ -51,7 +51,7 @@ describe('Auth e2e spec', () => {
 			const email = 'email@email.com'
 			const password = '1234'
 			await signupUser(email, password)
-			request(app.getHttpServer())
+			await request(app.getHttpServer())
 				.post('/auth/signup')
 				.send({
 					email,
